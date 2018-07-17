@@ -5,17 +5,19 @@ using System.Web;
 using ShopApp.Core.Models;
 using ShopApp.DataAccess.InMemory;
 using System.Web.Mvc;
-
+using ShopApp.Core.ViewModels;
 
 namespace ShopApp.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
 		ProductRepository context;
+		ProductCategoryRepository productCategories;
 
 		public ProductManagerController()
 		{
 			context = new ProductRepository();
+			productCategories = new ProductCategoryRepository();
 		}
 
         // GET: ProductManager
@@ -27,8 +29,10 @@ namespace ShopApp.WebUI.Controllers
 
 		public ActionResult Create()
 		{
-			Product product = new Product();
-			return View(product);
+			ProductManagerViewModel viewModel = new ProductManagerViewModel();
+			viewModel.Product = new Product();
+			viewModel.ProductCategories = productCategories.Collection();
+			return View(viewModel);
 		}
 
 		[HttpPost]
@@ -50,7 +54,14 @@ namespace ShopApp.WebUI.Controllers
 		{
 			Product product = context.Find(Id);
 			if (product == null) return HttpNotFound();
-			else return View(product);
+			else
+			{
+				ProductManagerViewModel viewModel = new ProductManagerViewModel();
+				viewModel.Product = product;
+				viewModel.ProductCategories = productCategories.Collection();
+
+				return View(viewModel);
+			}
 		}
 
 		[HttpPost]
