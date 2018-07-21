@@ -1,4 +1,5 @@
-﻿using ShopApp.Core.Models;
+﻿using ShopApp.Core.Contracts;
+using ShopApp.Core.Models;
 using ShopApp.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace ShopApp.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-		InMemoryRepository<ProductCategory> context;
+		IRepository<ProductCategory> context;
 
-		public ProductCategoryManagerController()
+		public ProductCategoryManagerController(IRepository<ProductCategory> productCategoryContext)
 		{
-			context = new InMemoryRepository<ProductCategory>();
+			context = productCategoryContext;
 		}
 
 		// GET: ProductManager
