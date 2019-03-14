@@ -4,7 +4,7 @@ https://www.udemy.com/better-web-development-pro-techniques-for-success. Course 
 ## What I learned
 Thanks to this app I understood the concept of MVC pattern as well as:
 * **basics of bootstrap**
-* **basics of JQuery**
+* **basics of jQuery**
 * **use of interfaces**
 * **basics of Enitity Framework**
 * **dependecy injection with Unity**
@@ -14,6 +14,6 @@ Thanks to this app I understood the concept of MVC pattern as well as:
 * **Enitity framework**
 * **Linq**
 * **Bootstrap**
-* **JQuery**
+* **jQuery**
 * **Unity for MVC**
 * **SQL Server**
